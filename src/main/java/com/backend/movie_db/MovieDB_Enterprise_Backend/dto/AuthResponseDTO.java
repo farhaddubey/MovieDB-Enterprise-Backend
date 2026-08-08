@@ -1,0 +1,19 @@
+package com.backend.movie_db.MovieDB_Enterprise_Backend.dto;
+
+import lombok.*;
+
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class AuthResponseDTO {
+
+    private String accessToken;
+
+    private String refreshToken;
+
+    private String tokenType;
+}
+
+
