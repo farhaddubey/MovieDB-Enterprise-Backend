@@ -33,6 +33,28 @@ public class GlobalExceptionHandler {
                         )
                 );
     }
+
+    @ExceptionHandler(WatchListAlreadyExistsException.class)
+    public ResponseEntity<?> handleWatchListAlreadyExists(ReviewNotFoundException ex) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(Map.of(
+                        "message", ex.getMessage(),
+                        "status", 1999
+                        )
+                );
+    }
+
+    @ExceptionHandler(WatchlistNotFoundException.class)
+    public ResponseEntity<?> handleWatchListNotFound(ReviewNotFoundException ex) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "message", ex.getMessage(),
+                        "status", 400
+                        )
+                );
+    }
 }
 
 // Without global Exception handler users get 500 Internal Server Error
