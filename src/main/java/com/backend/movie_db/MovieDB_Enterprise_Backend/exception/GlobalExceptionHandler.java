@@ -62,7 +62,13 @@ public class GlobalExceptionHandler {
                 "status", 404));
     }
 
-    
+    @ExceptionHandler(NotificationNotFoundException.class)
+    public ResponseEntity<?> handleNotificationsNotFound(NotificationNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                Map.of("message", ex.getMessage(),
+                        "status", 404)
+        );
+    }
 }
 
 // Without global Exception handler users get 500 Internal Server Error
