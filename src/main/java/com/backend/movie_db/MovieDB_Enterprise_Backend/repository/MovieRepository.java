@@ -18,6 +18,9 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     @Query("""SELECT m FROM Movie m WHERE m.totalRatings >= 100 ORDER BY m.averageRating DESC""")
     List<Movie> findTopRatedMovies;
+
+    @Query("""SELECT m FROM Movie m WHERE m.active = true ORDER BY m.totalRatings DESC""")
+    List<Movie> findTrendingMovies(Pageable pageable);
 }
 
 // Repository :
